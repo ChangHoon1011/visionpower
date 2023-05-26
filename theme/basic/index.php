@@ -15,58 +15,157 @@ if(G5_COMMUNITY_USE === false) {
 include_once(G5_THEME_PATH.'/head.php');
 ?>
 
-<h2 class="sound_only">최신글</h2>
+<ul id="content_m">
+    <li class="main_txt">
+        
+        <div><img src="<?php echo G5_IMG_URL; ?>/make/main_text.png" border="0" /></div>
+    </li>
 
-<div class="latest_top_wr">
-    <?php
-    // 이 함수가 바로 최신글을 추출하는 역할을 합니다.
-    // 사용방법 : latest(스킨, 게시판아이디, 출력라인, 글자수);
-    // 테마의 스킨을 사용하려면 theme/basic 과 같이 지정
-    echo latest('theme/pic_list', 'free', 4, 23);		// 최소설치시 자동생성되는 자유게시판
-	echo latest('theme/pic_list', 'qa', 4, 23);			// 최소설치시 자동생성되는 질문답변게시판
-	echo latest('theme/pic_list', 'notice', 4, 23);		// 최소설치시 자동생성되는 공지사항게시판
-    ?>
-</div>
-<div class="latest_wr">
-    <!-- 사진 최신글2 { -->
-    <?php
-    // 이 함수가 바로 최신글을 추출하는 역할을 합니다.
-    // 사용방법 : latest(스킨, 게시판아이디, 출력라인, 글자수);
-    // 테마의 스킨을 사용하려면 theme/basic 과 같이 지정
-    echo latest('theme/pic_block', 'gallery', 4, 23);		// 최소설치시 자동생성되는 갤러리게시판
-    ?>
-    <!-- } 사진 최신글2 끝 -->
-</div>
+    <!-- 왼쪽 빨간색 -->
+    <li class="left_red">
+        <div class="item" style="float:left;text-align:right;">
+            <p><img src="<?php echo G5_IMG_URL; ?>/make/red_left.gif" border="0" name="red1"
+                    OnMouseOut="red1.src='<?php echo G5_IMG_URL; ?>/make/red_left.gif';" OnMouseOver="red1.src="
+                    <?php echo G5_IMG_URL; ?>/make/red_left_over.gif'; "/></p>
+            <div class=" item_content">
+            <div style="width:221px; height:142px;">
+                <img src="<?php echo G5_IMG_URL; ?>/make/account2.gif" border="0" />
+            </div>
+        </div>
+        </div>
+    </li>
+    <li class="white_board">
+        <ul>
+            <!-- 왼쪽 자유게시판 공지사항 등 -->
+            <li class="notice_box">
+                <div class="notice_title">
+                    <div id="debate_S1" class="shoptep_on"><img src="<?php echo G5_IMG_URL; ?>/make/main_tap1on.gif"
+                            border="0"> </div>
+                    <div id="debate_S1#1" style="display:none;"
+                        onMouseOver="location.href=&quot;javascript:shopLayer_tap01('1')&quot;" class="shoptep_off"><img
+                            src="<?php echo G5_IMG_URL; ?>/make/main_tap1off.gif" border="0"> </div>
+                    <div id="debate_S2" style="display:none" class="shoptep_on"> <img
+                            src="<?php echo G5_IMG_URL; ?>/make/main_tap2on.gif" border="0"> </div>
+                    <div id="debate_S2#1" onMouseOver="location.href=&quot;javascript:shopLayer_tap01('2')&quot;"
+                        class="shoptep_off"> <img src="<?php echo G5_IMG_URL; ?>/make/main_tap2off.gif" border="0"> </div>
+                    <div id="debate_S3" style="display:none;" class="shoptep_on"> <img
+                            src="<?php echo G5_IMG_URL; ?>/make/main_tap3on.gif" border="0"> </div>
+                    <div id="debate_S3#1" onMouseOver="location.href=&quot;javascript:shopLayer_tap01('3')&quot;"
+                        class="shoptep_off"><img src="<?php echo G5_IMG_URL; ?>/make/main_tap3off.gif" border="0"> </div>
+                    <div class="no_more">
+                        <div id="debate_content_smore1"><a
+                                href="board.php?board=visionpowernotice&config=2&category=2"><img
+                                    src="<?php echo G5_IMG_URL; ?>/make/more.gif" border="0" /></a></div>
+                        <div id="debate_content_smore2" style="DISPLAY: none;"><a
+                                href="board.php?board=visionpower&config=11&category=17"><img
+                                    src="<?php echo G5_IMG_URL; ?>/make/more.gif" border="0" /></a></div>
+                        <div id="debate_content_smore3" style="DISPLAY: none;"><a
+                                href="board.php?board=visionpower&config=21&category=16"><img
+                                    src="<?php echo G5_IMG_URL; ?>/make/more.gif" border="0" /></a></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div id="debate_content_S1" class="notice_over">
+                    <? iBoard_Print_Here('visionpowernotice',$Campnotice_style_set); // ★공지사항  ?>
+                </div>
+                <div id="debate_content_S2" class="notice_over" style="display:none;">
+                    <? iBoard_Print_Here('visionpower',$Campfree_style_set); // ★자유게시판  ?>
+                </div>
+                <div id="debate_content_S3" class="notice_over" style="display:none;">
+                    <? iBoard_Print_Here('visionpower',$Powernotice_style_set); // ★비전파워 간증게시판  ?>
+                </div>
+            </li>
+            <li class="first_line"></li>
+            <!-- 가운데 신청버튼 -->
+            <li class="appli_box">
+                <img src="<?php echo G5_IMG_URL; ?>/make/appl_button.gif" border="0" usemap="#Map" />
+                <map name="Map">
+                    <area shape="rect" coords="0,45,89,69"
+                        href="board.php?board=visioncamp&config=28&command=other_insert&url=http://visionpower.com/visionpower/apply_saymini/apply_07_03.php&style=height:1600px">
+                    <area shape="rect" coords="-4,72,89,96"
+                        href="board.php?board=visioncamp&config=28&command=other_insert&url=http://visionpower.com/visionpower/apply_saymini/apply_07_03.php?type=login&style=height:1600px">
+                    <area shape="rect" coords="91,42,182,70"
+                        href="board.php?board=visioncamp&config=32&command=other_insert&url=http://visionpower.com/visionpower/apply_saymini/apply_03.php&style=height:1600px">
+                    <area shape="rect" coords="90,70,181,99"
+                        href="board.php?board=visioncamp&config=32&command=other_insert&url=http://visionpower.com/visionpower/apply_saymini/apply_03.php?type=login&style=height:1600px">
+                    <area shape="rect" coords="186,45,276,69"
+                        href="board.php?board=visioncamp&config=36&command=other_insert&url=http://visionpower.com/visionpower/apply_saymini/apply_09_03.php&style=height:1600px">
+                    <area shape="rect" coords="185,71,278,95"
+                        href="board.php?board=visioncamp&config=36&command=other_insert&url=http://visionpower.com/visionpower/apply_saymini/apply_09_03.php?type=login&style=height:1600px">
+                </map>
 
-<div class="latest_wr">
-<!-- 최신글 시작 { -->
-    <?php
-    //  최신글
-    $sql = " select bo_table
-                from `{$g5['board_table']}` a left join `{$g5['group_table']}` b on (a.gr_id=b.gr_id)
-                where a.bo_device <> 'mobile' ";
-    if(!$is_admin)
-	$sql .= " and a.bo_use_cert = '' ";
-    $sql .= " and a.bo_table not in ('notice', 'gallery') ";     //공지사항과 갤러리 게시판은 제외
-    $sql .= " order by b.gr_order, a.bo_order ";
-    $result = sql_query($sql);
-    for ($i=0; $row=sql_fetch_array($result); $i++) {
-		$lt_style = '';
-    	if ($i%3 !== 0 ) $lt_style = "margin-left:2%";
-    ?>
-    <div style="float:left;<?php echo $lt_style ?>" class="lt_wr">
-        <?php
-        // 이 함수가 바로 최신글을 추출하는 역할을 합니다.
-        // 사용방법 : latest(스킨, 게시판아이디, 출력라인, 글자수);
-        // 테마의 스킨을 사용하려면 theme/basic 과 같이 지정
-        echo latest('theme/basic', $row['bo_table'], 6, 24);
-        ?>
-    </div>
-    <?php
-    }
-    ?>
-    <!-- } 최신글 끝 -->
-</div>
+            </li>
+            <!-- 캠프자료 신청 버튼 -->
+            <li class="redbutton"><a href="board.php?board=visioncamp&config=38&category=8"><img
+                        src="<?php echo G5_IMG_URL; ?>/make/check_button.gif" border="0" /></a></li>
+            <li class="second_line"></li>
+            <!-- 오른쪽 슬라이드 배너 -->
+            <li class="slideben_box">
+                <div class="big_img">
+                    <!-- <a href="http://saymini.com/saybbs/data/board/visioncamp/file_in_body/2/ec98a4ec8b9ceb8a94eab8b82.jpg" target="_blank" id="i_screen_main_link">
+                    <img id='i_screen_main_img' width="270px" height="96px" src="<?=$this_skin?>
+/b_img/make/222.jpg" style="filter: blendtrans(duration=0.8)" border="0" align="absmiddle">
+                    </a> -->
+                    <a href="http://visioncamp.net" target="_blank" id="i_screen_main_link">
+                        <img id='i_screen_main_img' width="270px" height="96px" src="<?php echo G5_IMG_URL; ?>/make/222.jpg"
+                            style="filter: blendtrans(duration=0.8)" border="0" align="absmiddle">
+                    </a>
+                    <!-- <a href="http://175.207.13.216/saybbs/board.php?board=visionpower&config=34&category=10" target="_blank" id="i_screen_main_link">
+                        <img id='i_screen_main_img' width="270px" height="96px" src="<?php echo G5_IMG_URL; ?>/make/main_screen1.jpg" style="filter: blendtrans(duration=0.8)" border="0" align="absmiddle">
+                    </a> -->
+                    <div class="thumbnail_img">
+                        <a href="/saybbs/board.php?board=visionpowernotice&command=body&no=927&&config=2&category=2"
+                            id="i_screen_link2">
+                        </a>
+                        <!-- <a href="/saybbs/board.php?board=visionpowernotice&command=body&no=892&&config=2&category=2" id="i_screen_link2">
+                        </a> -->
+                        <!-- <a href="/saybbs/board.php?board=visionpowernotice&config=4&command=body&no=831" id="i_screen_link2">
+                        </a>
+                        <a href="/saybbs/board.php?board=visionpowernotice&config=4&command=body&no=833" id="i_screen_link1">
+                        </a> -->
+
+                        <!--여기하나추가-->
+                        <!-- 원래 메인사진임 -->
+
+                        <!-- <a href="http://visioncamp.net" id="i_screen_link1">
+                        <img src="<?php echo G5_IMG_URL; ?>/make/main_thumbnail1.gif" onmouseover="i_screen_img_chang(1)" class="i_set_transp" id="i_screen_small1" border="0" align="absmiddle" /></a> -->
+
+                        <!-- <a href="http://saymini.com/saybbs/board.php?board=visionpower&config=34&category=10" id="i_screen_link2">
+                        <img src="<?php echo G5_IMG_URL; ?>/make/main_thumbnail1.gif" onmouseover="i_screen_img_chang(2)" class="i_set_transp" id="i_screen_small2" border="0" align="absmiddle" /></a>  -->
+
+                        <!-- 실시간 중계 -->
+                        <!-- <a href="http://saymini.com/saybbs/data/board/visioncamp/file_in_body/2/ec98a4ec8b9ceb8a94eab8b82.jpg" id="i_screen_link2">
+                        <img src="<?php echo G5_IMG_URL; ?>/make/main_thumbnail1.gif" onmouseover="i_screen_img_chang(2)" class="i_set_transp" id="i_screen_small2" border="0" align="absmiddle" /></a> -->
+
+                        <!-- 사진다운 -->
+                        <!-- <a href="http://saymini.com/saybbs/board.php?board=visioncamp&config=50&category=15" id="i_screen_link3"> 
+                        <img src="<?php echo G5_IMG_URL; ?>/make/main_thumbnail1.gif" onmouseover="i_screen_img_chang(3)" class="i_set_transp" id="i_screen_small3" border="0" align="absmiddle" /></a> -->
+
+                        <!-- 마무리영상보기 -->
+                        <!-- <a href="http://saymini.com/saybbs/board.php?board=visioncamp&config=51&category=16" target="_blank" id="i_screen_link4">
+                        <img src="<?php echo G5_IMG_URL; ?>/make/main_thumbnail1.gif" onmouseover="i_screen_img_chang(4)" class="i_unset_transp" id="i_screen_small4" border="0" align="absmiddle" /></a> -->
+
+
+
+
+
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <!-- 오른쪽 빨간색 -->
+    <li class="right_red">
+        <div class="item">
+            <p><img src="<?php echo G5_IMG_URL; ?>/make/red_right.gif" border="0" name="red2"
+                    OnMouseOut="red2.src='<?php echo G5_IMG_URL; ?>/make/red_right.gif' ;"
+                    OnMouseOver="red2.src='<?php echo G5_IMG_URL; ?>/make/red_right_over.gif' ; " /></p>
+            <div class="item_content">
+                <? iBoard_Print_Here('visioncampmovie',$Movie_style_set); // ★영상  ?>
+            </div>
+        </div>
+    </li>
+</ul>
 
 <?php
 include_once(G5_THEME_PATH.'/tail.php');
