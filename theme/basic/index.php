@@ -14,7 +14,8 @@ if(G5_COMMUNITY_USE === false) {
 
 include_once(G5_THEME_PATH.'/head.php');
 ?>
-
+<script src="<?php echo G5_JS_URL; ?>/jquery-1.12.4.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="<?php echo G5_JS_URL; ?>/script.js"></script>
 <ul id="content_m">
     <li class="main_txt">
         
@@ -23,11 +24,10 @@ include_once(G5_THEME_PATH.'/head.php');
 
     <!-- 왼쪽 빨간색 -->
     <li class="left_red">
-        <div class="item" style="float:left;text-align:right;">
+        <div class="item" id="item" style="float:left;text-align:right;">
             <p><img src="<?php echo G5_IMG_URL; ?>/make/red_left.gif" border="0" name="red1"
-                    OnMouseOut="red1.src='<?php echo G5_IMG_URL; ?>/make/red_left.gif';" OnMouseOver="red1.src="
-                    <?php echo G5_IMG_URL; ?>/make/red_left_over.gif'; "/></p>
-            <div class=" item_content">
+                    OnMouseOut="red1.src='<?php echo G5_IMG_URL; ?>/make/red_left.gif';" OnMouseOver="red2.src='<?php echo G5_IMG_URL; ?>/make/red_left_over.gif' ; "/></p>
+            <div class="item_content">
             <div style="width:221px; height:142px;">
                 <img src="<?php echo G5_IMG_URL; ?>/make/account2.gif" border="0" />
             </div>
@@ -66,13 +66,13 @@ include_once(G5_THEME_PATH.'/head.php');
                     <div class="clear"></div>
                 </div>
                 <div id="debate_content_S1" class="notice_over">
-                    <? iBoard_Print_Here('visionpowernotice',$Campnotice_style_set); // ★공지사항  ?>
+                    <?// iBoard_Print_Here('visionpowernotice',$Campnotice_style_set); // ★공지사항  ?>
                 </div>
                 <div id="debate_content_S2" class="notice_over" style="display:none;">
-                    <? iBoard_Print_Here('visionpower',$Campfree_style_set); // ★자유게시판  ?>
+                    <?// iBoard_Print_Here('visionpower',$Campfree_style_set); // ★자유게시판  ?>
                 </div>
                 <div id="debate_content_S3" class="notice_over" style="display:none;">
-                    <? iBoard_Print_Here('visionpower',$Powernotice_style_set); // ★비전파워 간증게시판  ?>
+                    <?// iBoard_Print_Here('visionpower',$Powernotice_style_set); // ★비전파워 간증게시판  ?>
                 </div>
             </li>
             <li class="first_line"></li>
@@ -156,16 +156,76 @@ include_once(G5_THEME_PATH.'/head.php');
     </li>
     <!-- 오른쪽 빨간색 -->
     <li class="right_red">
-        <div class="item">
+        <div class="item" >
             <p><img src="<?php echo G5_IMG_URL; ?>/make/red_right.gif" border="0" name="red2"
                     OnMouseOut="red2.src='<?php echo G5_IMG_URL; ?>/make/red_right.gif' ;"
                     OnMouseOver="red2.src='<?php echo G5_IMG_URL; ?>/make/red_right_over.gif' ; " /></p>
             <div class="item_content">
-                <? iBoard_Print_Here('visioncampmovie',$Movie_style_set); // ★영상  ?>
+                <table cellpadding="0" border="0" width="100%">
+                    <tr><td>
+                        <iframe width="246" height="142" src="https://www.youtube.com/embed/k8arQtmXaPQ?amp;autoplay=1" frameborder="0" allowfullscreen=""></iframe>
+                    </td></tr>
+                </table>
             </div>
         </div>
     </li>
 </ul>
 
+<script language="javascript">
+
+$('.item').toggle(
+    
+    function() {
+        var $this = $(this);
+        expand($this);
+    },
+    function() {
+        var $this = $(this);
+        collapse($this);
+    }
+);
+
+
+function expand($elem) {
+   
+    var angle = 0;
+    var t = setInterval(function() {
+        if (angle == 1440) {
+            clearInterval(t);
+            return;
+        }
+        angle += 40;
+        $('.link', $elem).stop().animate({
+            rotate: '+=-40deg'
+        }, 0);
+    }, 10);
+    $elem.stop().animate({
+            width: '300px'
+        }, 500)
+        .find('.item_content').fadeIn(400, function() {
+            $(this).find('p').stop(true, true).fadeIn(600);
+        });
+}
+
+function collapse($elem) {
+    var angle = 1440;
+    var t = setInterval(function() {
+        if (angle == 0) {
+            clearInterval(t);
+            return;
+        }
+        angle -= 40;
+        $('.link', $elem).stop().animate({
+            rotate: '+=40deg'
+        }, 0);
+    }, 10);
+    $elem.stop().animate({
+            width: '24px'
+        }, 500)
+        .find('.item_content').stop(true, true).fadeOut().find('p').stop(true, true).fadeOut();
+}
+
+expand($('.right_red .item'));
+</script>
 <?php
-include_once(G5_THEME_PATH.'/tail.php');
+//include_once(G5_THEME_PATH.'/tail.php');
